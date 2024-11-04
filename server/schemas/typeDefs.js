@@ -23,11 +23,6 @@ const typeDefs = gql`
     travelers: [Traveler]
   }
 
-  type Trips {
-    trips: [Trip]
-    countries: [Country]
-  }
-
   type Traveler {
     id: ID!
     name: String
@@ -38,12 +33,18 @@ const typeDefs = gql`
     name: String
   }
 
+  type Mutation {
+    createCountry(name: String!): Country
+    updateCountry(id: ID!, name: String!): Country
+    deleteCountry(id: ID!): [Country]
+  }
+
   type Query {
-    books: [Book]
+    books(title: String): [Book]
     authors: [Author]
     trips: [Trip]
     travelers: [Traveler]
-    countries: [Country]
+    countries(name: String): [Country]
   }
 `;
 
